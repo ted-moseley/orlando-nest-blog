@@ -11,12 +11,12 @@
     <meta name="author" content="{{ . }}">
   {{ end }}
 
-  {{ $tailwind := resources.Get "css/tailwind.css" }}
-  {{ if $tailwind }}
-    {{ $processed := $tailwind | minify | fingerprint }}
+  {{ $css := resources.Get "css/tailwind.css" }}
+  {{ if $css }}
+    {{ $processed := $css | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $processed.RelPermalink }}" integrity="{{ $processed.Data.Integrity }}">
   {{ else }}
-    <!-- ⚠️ assets/css/tailwind.css not found. Make sure PostCSS compiles it before Hugo runs. -->
+    <!-- ⚠️ tailwind.css not found — ensure PostCSS compiled it before Hugo runs -->
   {{ end }}
 
   {{ with .OutputFormats.Get "RSS" }}
