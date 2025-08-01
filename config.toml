@@ -1,0 +1,35 @@
+baseURL = "https://orlando-nest-blog.pages.dev/"
+title = "Orlando Nest Blog"
+theme = "tella"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+paginate = 10
+
+[params]
+  author = "Ted Moseley"
+  description = "Orlando Nest is your local guide to real estate, lifestyle, and living well in Orlando and Central Florida. Featuring expert insights on neighborhoods, gated communities, lakefront homes, and more."
+  keywords = [
+    "Orlando real estate",
+    "Central Florida real estate",
+    "Winter Park homes",
+    "Lake Nona homes for sale",
+    "College Park real estate",
+    "Oviedo real estate market",
+    "golf course homes Orlando",
+    "lakefront homes Central Florida",
+    "multigenerational homes",
+    "homes with casitas",
+    "Orlando gated communities",
+    "Central Florida gated communities",
+    "55+ communities in Orlando",
+    "moving to Orlando",
+    "downsize in Central Florida"
+  ]
+ homepageLayout = "blog"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
