@@ -1,17 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ .Title }} | Orlando Nest Blog</title>
-</head>
-<body>
-  <header>
-    <h1><a href="/">Orlando Nest Blog</a></h1>
-  </header>
-  {{ block "main" . }}{{ end }}
-  <footer>
-    <p>&copy; {{ now.Format "2006" }} Orlando Nest Blog</p>
-  </footer>
-</body>
-</html>
+{{ define "main" }}
+  <main>
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </main>
+{{ end }}
 
