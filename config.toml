@@ -1,35 +1,48 @@
 baseURL = "https://orlando-nest-blog.pages.dev/"
+languageCode = "en-us"
 title = "Orlando Nest Blog"
 theme = "tella"
-languageCode = "en-us"
-defaultContentLanguage = "en"
 paginate = 10
 
 [params]
   author = "Ted Moseley"
-  description = "Orlando Nest is your local guide to real estate, lifestyle, and living well in Orlando and Central Florida. Featuring expert insights on neighborhoods, gated communities, lakefront homes, and more."
-  keywords = [
-    "Orlando real estate",
-    "Central Florida real estate",
-    "Winter Park homes",
-    "Lake Nona homes for sale",
-    "College Park real estate",
-    "Oviedo real estate market",
-    "golf course homes Orlando",
-    "lakefront homes Central Florida",
-    "multigenerational homes",
-    "homes with casitas",
-    "Orlando gated communities",
-    "Central Florida gated communities",
-    "55+ communities in Orlando",
-    "moving to Orlando",
-    "downsize in Central Florida"
-  ]
- homepageLayout = "blog"
+  description = "Real estate blog covering Orlando & Central Florida lifestyle, home buying & selling tips, market trends, and community spotlights."
+  # enableDarkMode = true
+  favicon = "favicon-32x32.png"
 
 [taxonomies]
   category = "categories"
   tag = "tags"
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+[permalinks]
+  blog = "/blog/:slug/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[menu]
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 2
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 3
+
+[[menu.main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 4
