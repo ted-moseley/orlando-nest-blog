@@ -16,7 +16,7 @@
     {{ $processed := $css | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $processed.RelPermalink }}" integrity="{{ $processed.Data.Integrity }}">
   {{ else }}
-    <!-- ⚠️ tailwind.css not found — ensure PostCSS compiled it before Hugo runs -->
+    <!-- ⚠️ tailwind.css not found — ensure it’s precompiled into assets/css/ before Hugo runs -->
   {{ end }}
 
   {{ with .OutputFormats.Get "RSS" }}
