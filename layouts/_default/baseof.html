@@ -1,7 +1,30 @@
-{{ define "main" }}
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-4">{{ .Title }}</h1>
-    {{ .Content }}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+
+  {{ if .IsHome }}
+    <meta name="description" content="Orlando Nest Blog – Real estate insights, community spotlights, and local lifestyle 
+content for Orlando and Central Florida.">
+  {{ else if .Params.description }}
+    <meta name="description" content="{{ .Params.description }}">
+  {{ end }}
+
+  {{ hugo.Generator }}
+  {{ partial "head.html" . }}
+</head>
+
+<body class="bg-white text-gray-900 font-sans leading-normal tracking-tight">
+  {{ partial "header.html" . }}
+
+  <main class="container mx-auto px-6 py-10">
+    {{ block "main" . }}{{ end }}
   </main>
-{{ end }}
+
+  {{ partial "footer.html" . }}
+
+ </body>
+</html>
 

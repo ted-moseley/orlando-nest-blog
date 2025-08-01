@@ -1,3 +1,63 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://orlando-nest-blog.pages.dev/"
+languageCode = "en-us"
+title = "Orlando Nest Blog"
+theme = "tella"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+
+canonifyURLs = true
+assetDir = "assets"
+
+[pagination]
+  pagerSize = 10
+
+[author]
+  name = "Ted Moseley"
+
+[params]
+  description = "Your trusted source for real estate tips, insights, and updates across Orlando and Central Florida."
+  [params.logo]
+    src = "/logo.png"
+    alt = "Orlando Nest logo"
+
+# Optional Tella-specific features
+  dateFormat = "January 2, 2006"
+  mainSections = ["blog", "posts"]
+  enableSearch = true
+  showReadingTime = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+
+[permalinks]
+  blog = "/blog/:slug/"
+  posts = "/posts/:slug/"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[build]
+  writeStats = true
+
+[server]
+  port = 1313
+  watch = true
+
+
+[mediaTypes."text/css"]
+  suffixes = ["css"]
+
+[outputFormats.CSS]
+  mediaType = "text/css"
+  baseName = "styles"
+  isPlainText = true
+  notAlternative = true
+
+[params.assets]
+  css = ["css/main.css"]
+
+

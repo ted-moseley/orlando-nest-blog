@@ -1,0 +1,28 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+
+  {{ with .Site.Params.description }}
+    <meta name="description" content="{{ . }}">
+  {{ end }}
+
+  {{ with .Site.Params.author }}
+    <meta name="author" content="{{ . }}">
+  {{ end }}
+
+  {{ $css := resources.Get "css/main.css" }}
+  {{ if $css }}
+    {{ $processed := $css | css.PostCSS | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $processed.RelPermalink }}" integrity="{{ $processed.Data.Integrity }}">
+  {{ else }}
+    <!-- ⚠️ main.css not found or failed to load. -->
+  {{ end }}
+
+  {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
+  {{ end }}
+
+  {{ partial "analytics.html" . }}
+</head>
+

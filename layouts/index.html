@@ -1,11 +1,6 @@
 {{ define "main" }}
-  <h1>Welcome to the Orlando Nest Blog</h1>
-
-  <ul>
-    {{ range .Site.RegularPages }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </li>
-    {{ end }}
-  </ul>
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
 {{ end }}
+
+
