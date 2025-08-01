@@ -1,20 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <title>{{ .Title }} | Orlando Nest Blog</title>
 </head>
 <body>
   <header>
-    <h1><a href="/">{{ .Site.Title }}</a></h1>
+    <h1><a href="/">Orlando Nest Blog</a></h1>
   </header>
-
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-
+  {{ block "main" . }}{{ end }}
   <footer>
-    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}</p>
+    <p>&copy; {{ now.Format "2006" }} Orlando Nest Blog</p>
   </footer>
 </body>
 </html>
