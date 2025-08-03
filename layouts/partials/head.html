@@ -1,27 +1,30 @@
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {{ with .Site.Params.description }}
-    <meta name="description" content="{{ . }}">
-  {{ end }}
+<title>{{ if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
 
-  {{ with .Site.Params.author }}
-    <meta name="author" content="{{ . }}">
-  {{ end }}
+{{ if .IsHome }}
+  <meta name="description" content="Orlando Nest Blog – Real estate insights, community spotlights, and local lifestyle content for Orlando and Central Florida.">
+  {{ else if .Params.description }}
+    <meta name="description" content="{{ .Params.description }}">
+    {{ end }}
 
-  {{ $css := resources.Get "css/tailwind.css" }}
-  {{ if $css }}
-    {{ $processed := $css | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $processed.RelPermalink }}" integrity="{{ $processed.Data.Integrity }}">
-  {{ else }}
-    <!-- ⚠️ tailwind.css not found — ensure it’s precompiled into assets/css/ before Hugo runs -->
-  {{ end }}
+    <meta name="generator" content="Hugo">
 
-  {{ with .OutputFormats.Get "RSS" }}
-    <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
-  {{ end }}
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ "images/OrlandoNest-512.png" | relURL }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ "images/OrlandoNest-512.png" | relURL }}">
+    <link rel="mask-icon" href="{{ "images/OrlandoNest-512.png" | relURL }}" color="#000000">
+    <meta name="theme-color" content="#ffffff">
 
-  {{ partial "analytics.html" . }}
-</head>
+    {{ $css := resources.Get "css/tailwind.css" }}
+    {{ if $css }}
+      {{ $processed := $css | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ $processed.RelPermalink }}" integrity="{{ $processed.Data.Integrity }}">
+        {{ end }}
+
+        {{ with .OutputFormats.Get "RSS" }}
+          <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
+          {{ end }}
+
+          {{ partial "analytics.html" . }}
+          

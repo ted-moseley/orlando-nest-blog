@@ -2,47 +2,36 @@ baseURL = "https://orlando-nest-blog.pages.dev/"
 languageCode = "en-us"
 title = "Orlando Nest Blog"
 theme = "tella"
-paginate = 10
 
 [params]
-  author = "Ted Moseley"
-  description = "Real estate blog covering Orlando & Central Florida lifestyle, home buying & selling tips, market trends, and community spotlights."
-  # enableDarkMode = true
-  favicon = "favicon-32x32.png"
-
-[taxonomies]
-  category = "categories"
-  tag = "tags"
-
-[permalinks]
-  blog = "/blog/:slug/"
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-  [markup.tableOfContents]
-    startLevel = 2
-    endLevel = 3
+  description = "Your trusted source for real estate tips, insights, and updates across Orlando and Central Florida."
+  author = "Ted Moseley – Orlando Nest"
+  
+  [params.logo]
+    main = "images/WebsiteIcon.png"
+    alt = "Orlando Nest logo"
+    size = "h-10 w-auto"
 
 [menu]
+    
+      [[menu.main]]
+        name = "Blog"
+        url = "/"
+        weight = 1
+    
+      [[menu.main]]
+        name = "About"
+        url = "https://orlandonest.com/about"
+        weight = 2
+    
+      [[menu.main]]
+        name = "Contact"
+        url = "https://orlandonest.com/contact"
+        weight = 3
+    
 
-[[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 1
+[outputs]
+home = ["HTML", "RSS"]
 
-[[menu.main]]
-  name = "Blog"
-  url = "/blog/"
-  weight = 2
-
-[[menu.main]]
-  name = "About"
-  url = "/about/"
-  weight = 3
-
-[[menu.main]]
-  name = "Contact"
-  url = "/contact/"
-  weight = 4
+[params]
+mainSections = ["blog"]

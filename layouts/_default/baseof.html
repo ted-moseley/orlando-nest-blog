@@ -1,30 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
 
-  {{ if .IsHome }}
-    <meta name="description" content="Orlando Nest Blog – Real estate insights, community spotlights, and local lifestyle 
-content for Orlando and Central Florida.">
-  {{ else if .Params.description }}
-    <meta name="description" content="{{ .Params.description }}">
+  {{ with .Title }}
+    <title>{{ . }} | Orlando Nest Blog</title>
+    <meta name="title" content="{{ . }} | Orlando Nest Blog">
   {{ end }}
 
-  {{ hugo.Generator }}
-  {{ partial "head.html" . }}
+  {{ with .Params.description }}
+    <meta name="description" content="{{ . }}">
+  {{ else }}
+    <meta name="description" content="Explore Orlando real estate insights, community highlights, and expert advice with Ted Moseley at Orlando Nest – Real Broker, LLC.">
+  {{ end }}
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Orlando Nest Blog">
+  <meta property="og:title" content="{{ .Title }} | Orlando Nest Blog">
+  {{ with .Params.description }}
+    <meta property="og:description" content="{{ . }}">
+  {{ end }}
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ with .Params.featuredImage }}
+    <meta property="og:image" content="{{ . }}">
+  {{ else }}
+    <meta property="og:image" content="https://OrlandoNest.com/images/default-og.jpg">
+  {{ end }}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TedMoseley">
+  <meta name="twitter:title" content="{{ .Title }} | Orlando Nest Blog">
+  {{ with .Params.description }}
+    <meta name="twitter:description" content="{{ . }}">
+  {{ end }}
+  {{ with .Params.featuredImage }}
+    <meta name="twitter:image" content="{{ . }}">
+  {{ else }}
+    <meta name="twitter:image" content="https://OrlandoNest.com/images/default-og.jpg">
+  {{ end }}
+
+  <!-- Tailwind -->
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body class="bg-white text-gray-900 font-sans leading-normal tracking-tight">
+<body class="bg-white text-gray-800 font-sans">
+
   {{ partial "header.html" . }}
 
-  <main class="container mx-auto px-6 py-10">
+  <main class="max-w-4xl mx-auto px-4 py-12">
     {{ block "main" . }}{{ end }}
   </main>
 
   {{ partial "footer.html" . }}
 
- </body>
+</body>
 </html>
-
